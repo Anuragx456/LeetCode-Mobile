@@ -1,16 +1,18 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { createClient } from '@supabase/supabase-js'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createClient } from "@supabase/supabase-js";
+import "@/lib/crypto-pollyfill";
+import "react-native-url-polyfill";
 
 export const supabase = createClient(
-    process.env.EXPO_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_KEY!,
-    {
-        auth: {
-            storage: AsyncStorage,
-            autoRefreshToken: true,
-            persistSession: true,
-            detectSessionInUrl: false,
-            flowType: 'pkce'
-        }
-    }
-)
+  process.env.EXPO_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_KEY!,
+  {
+    auth: {
+      storage: AsyncStorage,
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: false,
+      flowType: "pkce",
+    },
+  },
+);
