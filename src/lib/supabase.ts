@@ -5,7 +5,7 @@ import "react-native-url-polyfill";
 
 export const supabase = createClient(
   process.env.EXPO_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_KEY!,
+  process.env.EXPO_PUBLIC_SUPABASE_KEY!,
   {
     auth: {
       storage: AsyncStorage,

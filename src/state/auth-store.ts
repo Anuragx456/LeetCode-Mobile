@@ -24,26 +24,27 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
   initialize: () => {
     if (get().isInitialized) {
       return () => {};
-
-      set({ isInitialized: true });
-
-      supabase.auth.getSession().then(({ data: { session } }) => {
-        set({
-          session,
-          user: session?.user,
-        });
-      });
-
-      const {
-        data: { subscription },
-      } = supabase.auth.onAuthStateChange((_event, session) => {
-        set({
-          session,
-          user: session?.user ?? null,
-          isLoading: false,
-        });
-      });
     }
+
+    set({ isInitialized: true });
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      set({
+        session,
+        user: session?.user ?? null,
+        isLoading: false,
+      });
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      set({
+        session,
+        user: session?.user ?? null,
+        isLoading: false,
+      });
+    });
 
     return () => subscription.unsubscribe();
   },
