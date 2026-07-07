@@ -21,7 +21,7 @@
       "package": "com.universe777.LeetCodeMobile"
     },
     "web": {
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
