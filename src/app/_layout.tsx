@@ -1,3 +1,4 @@
+import { colors } from '@/lib/theme'
 import { useAuthStore } from '@/state/auth-store'
 import { Stack, useRouter, useSegments } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
@@ -43,10 +44,10 @@ function RootNavigator() {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#0a0a0c',
+          backgroundColor: colors.background,
         }}
       >
-        <ActivityIndicator color="#bdf06e" />
+        <ActivityIndicator color={colors.lime} />
       </View>
     )
   }
@@ -55,7 +56,7 @@ function RootNavigator() {
     <Stack
       screenOptions={{
         headerShown: false,
-        contentStyle: { backgroundColor: '#0a0a0c' },
+        contentStyle: { backgroundColor: colors.background },
         animation: 'fade',
       }}
     >

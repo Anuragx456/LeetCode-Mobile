@@ -11,9 +11,8 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
-import { colors } from '@/lib/theme'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { colors } from '@/lib/theme';
 
 export default function CustomTabBar({
   state,
@@ -73,7 +72,7 @@ export default function CustomTabBar({
               {/* Icon shown only when focused */}
               {isFocused && options.tabBarIcon ? (
                 <View style={styles.iconWrap}>
-                  {options.tabBarIcon({ focused: true, color: '#bdf06e', size: 16 })}
+                  {options.tabBarIcon({ focused: true, color: colors.lime, size: 16 })}
                 </View>
               ) : null}
 
@@ -112,7 +111,7 @@ const styles = StyleSheet.create({
   pill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#1C1C1E',
+    backgroundColor: colors.tabBar,
     borderRadius: 50,
     paddingVertical: 5,
     paddingHorizontal: 5,
@@ -133,7 +132,7 @@ const styles = StyleSheet.create({
 
   /* Focused tab gets a lighter inner pill */
   tabActive: {
-    backgroundColor: '#3A3A3C',
+    backgroundColor: colors.tabBarActive,
   },
 
   /* Subtle opacity feedback on press */
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
   },
 
   labelActive: {
-    color: '#bdf06e',
+    color: colors.lime,
   },
 
   labelInactive: {
@@ -169,7 +168,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#3A3A3C',
+    backgroundColor: colors.tabBarActive,
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 2,

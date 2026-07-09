@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useLayoutEffect, useMemo } from 'react'
 import type { ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { colors } from '@/lib/theme'
 
 type Nav = {
   getParent: () => Nav | undefined
@@ -13,7 +14,7 @@ export function useTabBarStyle(): ViewStyle {
   const insets = useSafeAreaInsets()
   return useMemo(
     () => ({
-      backgroundColor: '#0f1014',
+      backgroundColor: colors.tabBar,
       borderTopColor: 'rgba(255,255,255,0.07)',
       borderTopWidth: 1,
       height: 56 + insets.bottom,

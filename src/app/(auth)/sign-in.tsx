@@ -15,14 +15,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { signInWithOAuth } from '@/lib/auth'
+import { colors } from '@/lib/theme'
 
 type Provider = 'github' | 'google'
-
-const LIME = '#bdf06e'
-const PEACH = '#fdba74'
-const BACKGROUND = '#0a0a0c'
-const FOREGROUND = '#fafafa'
-const MUTED = '#9e9ea7'
 
 export default function SignInScreen() {
   const [loading, setLoading] = useState<Provider | null>(null)
@@ -87,19 +82,22 @@ export default function SignInScreen() {
           <View style={styles.features}>
             <FeatureRow
               icon="zap"
-              color={LIME}
+              color={colors.lime}
+              bg={colors.limeSoft}
               title="Daily practice"
               subtitle="Quick problems that fit your day"
             />
             <FeatureRow
               icon="map-pin"
-              color={PEACH}
+              color={colors.peach}
+              bg={colors.warningBg}
               title="Track progress"
               subtitle="Streaks, topics, and solved history"
             />
             <FeatureRow
               icon="shield"
-              color="#a5f3fc"
+              color={colors.mint}
+              bg={colors.mintSoft}
               title="Private & secure"
               subtitle="Supabase Auth · secure sessions"
             />
@@ -116,10 +114,10 @@ export default function SignInScreen() {
               onPress={() => handleSignIn('github')}
             >
               {loading === 'github' ? (
-                <ActivityIndicator color={BACKGROUND} />
+                <ActivityIndicator color={colors.background} />
               ) : (
                 <>
-                  <AntDesign name="github" size={18} color={BACKGROUND} />
+                  <AntDesign name="github" size={18} color={colors.background} />
                   <Text style={styles.githubButtonLabel}>
                     Continue with GitHub
                   </Text>
@@ -137,10 +135,10 @@ export default function SignInScreen() {
               onPress={() => handleSignIn('google')}
             >
               {loading === 'google' ? (
-                <ActivityIndicator color={FOREGROUND} />
+                <ActivityIndicator color={colors.foreground} />
               ) : (
                 <>
-                  <AntDesign name="google" size={18} color={FOREGROUND} />
+                  <AntDesign name="google" size={18} color={colors.foreground} />
                   <Text style={styles.googleButtonLabel}>
                     Continue with Google
                   </Text>
@@ -175,19 +173,19 @@ export default function SignInScreen() {
 function FeatureRow({
   icon,
   color,
+  bg,
   title,
   subtitle,
 }: {
   icon: keyof typeof Feather.glyphMap
   color: string
+  bg: string
   title: string
   subtitle: string
 }) {
   return (
     <View style={styles.featureRow}>
-      <View
-        style={[styles.featureIconBox, { backgroundColor: `${color}24` }]}
-      >
+      <View style={[styles.featureIconBox, { backgroundColor: bg }]}>
         <Feather name={icon} size={18} color={color} />
       </View>
       <View style={styles.featureCopy}>
@@ -201,7 +199,7 @@ function FeatureRow({
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: BACKGROUND,
+    backgroundColor: colors.background,
   },
   safeArea: {
     flex: 1,
@@ -224,16 +222,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
-    backgroundColor: 'rgba(189, 240, 110, 0.14)',
+    backgroundColor: colors.limeSoft,
     borderWidth: 1,
-    borderColor: 'rgba(189, 240, 110, 0.32)',
+    borderColor: colors.limeBorder,
   },
   logoImage: {
     width: 28,
     height: 28,
   },
   version: {
-    color: MUTED,
+    color: colors.muted,
     fontSize: 12,
     letterSpacing: 1.4,
   },
@@ -248,42 +246,42 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 999,
     marginBottom: 16,
-    backgroundColor: 'rgba(189, 240, 110, 0.12)',
+    backgroundColor: colors.limeSoft,
     borderWidth: 1,
-    borderColor: 'rgba(189, 240, 110, 0.28)',
+    borderColor: colors.limeBorder,
   },
   badgeDot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: LIME,
+    backgroundColor: colors.lime,
     marginRight: 8,
   },
   badgeText: {
-    color: LIME,
+    color: colors.lime,
     fontSize: 12,
     fontWeight: '600',
   },
   title: {
-    color: FOREGROUND,
+    color: colors.foreground,
     fontSize: 36,
     lineHeight: 42,
     fontWeight: '700',
   },
   titleAccent: {
-    color: LIME,
+    color: colors.lime,
     fontSize: 36,
     lineHeight: 42,
     fontWeight: '700',
   },
   subtitle: {
-    color: MUTED,
+    color: colors.muted,
     fontSize: 15,
     lineHeight: 22,
     marginTop: 12,
   },
   subtitleHighlight: {
-    color: PEACH,
+    color: colors.peach,
   },
   features: {
     marginTop: 32,
@@ -294,9 +292,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 16,
     padding: 14,
-    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.06)',
+    borderColor: colors.cardBorder,
   },
   featureIconBox: {
     width: 40,
@@ -310,12 +308,12 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   featureTitle: {
-    color: FOREGROUND,
+    color: colors.foreground,
     fontSize: 14,
     fontWeight: '600',
   },
   featureSubtitle: {
-    color: MUTED,
+    color: colors.muted,
     fontSize: 12,
   },
   actions: {
@@ -329,7 +327,7 @@ const styles = StyleSheet.create({
     gap: 10,
     minHeight: 52,
     borderRadius: 16,
-    backgroundColor: LIME,
+    backgroundColor: colors.lime,
     paddingHorizontal: 20,
   },
   googleButton: {
@@ -339,9 +337,9 @@ const styles = StyleSheet.create({
     gap: 10,
     minHeight: 52,
     borderRadius: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.12)',
+    borderColor: colors.cardBorder,
     paddingHorizontal: 20,
   },
   buttonPressed: {
@@ -351,25 +349,25 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   githubButtonLabel: {
-    color: BACKGROUND,
+    color: colors.background,
     fontSize: 16,
     fontWeight: '600',
   },
   googleButtonLabel: {
-    color: FOREGROUND,
+    color: colors.foreground,
     fontSize: 16,
     fontWeight: '600',
   },
 
   legal: {
-    color: MUTED,
+    color: colors.muted,
     fontSize: 12,
     lineHeight: 18,
     textAlign: 'center',
     marginTop: 24,
   },
   legalLink: {
-    color: PEACH,
+    color: colors.peach,
     textDecorationLine: 'underline',
   },
 })

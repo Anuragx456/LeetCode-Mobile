@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { supabase } from "../lib/supabase";
 import type { Session, User } from "@supabase/supabase-js";
-import { subscribe } from "expo-router/build/link/linking";
 import { createSessionFromUrl, isAuthCallbackUrl } from "@/lib/auth";
 
 interface AuthStore {

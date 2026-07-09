@@ -1,3 +1,4 @@
+import { colors } from '@/lib/theme'
 import { useAuthStore } from '@/state/auth-store'
 import * as Linking from 'expo-linking'
 import { useRouter } from 'expo-router'
@@ -32,13 +33,13 @@ export default function AuthCallbackScreen() {
         justifyContent: 'center',
         alignItems: 'center',
         gap: 12,
-        backgroundColor: '#0a0a0c',
+        backgroundColor: colors.background,
       }}
     >
       {!error ? (
-        <ActivityIndicator color="#bdf06e" />
+        <ActivityIndicator color={colors.lime} />
       ) : (
-        <Text style={{ color: '#fafafa' }}>{error}</Text>
+        <Text style={{ color: colors.foreground }}>{error}</Text>
       )}
     </View>
   )

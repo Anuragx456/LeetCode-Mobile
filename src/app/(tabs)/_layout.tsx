@@ -53,6 +53,7 @@
 
 import CustomTabBar from '../components/CustomTabBar'
 import { Ionicons } from '@expo/vector-icons'
+import { colors } from '@/lib/theme'
 import { Tabs } from 'expo-router'
 
 export default function TabsLayout() {
@@ -61,7 +62,7 @@ export default function TabsLayout() {
       tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         headerShown: false,
-        sceneStyle: { backgroundColor: '#0a0a0c' },
+        sceneStyle: { backgroundColor: colors.background },
       }}
     >
       <Tabs.Screen
